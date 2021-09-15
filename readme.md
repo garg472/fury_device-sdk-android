@@ -18,7 +18,7 @@ For more details about this, visit the [developers guide](https://developers.mer
 
 Add this line to your app's `build.gradle` inside the `dependencies` section:
 ```java
-implementation 'com.mercadolibre.android.device:sdk:2.0.0'
+implementation 'com.mercadolibre.android.device:sdk:2.0.1'
 ```
 
 ### Local deployment
