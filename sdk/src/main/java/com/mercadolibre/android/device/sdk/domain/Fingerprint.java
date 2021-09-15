@@ -1,6 +1,5 @@
 package com.mercadolibre.android.device.sdk.domain;
 
-import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,9 +25,6 @@ public class Fingerprint implements Serializable {
     public long diskSpace;
     public long freeDiskSpace;
     public VendorSpecificAttributes vendorSpecificAttributes = new VendorSpecificAttributes();
-
-    @SerializedName("location")
-    public LocationData locationData;
 
     public ArrayList<VendorId> getVendorIds() {
         return vendorIds;
@@ -102,31 +98,4 @@ public class Fingerprint implements Serializable {
         this.vendorSpecificAttributes = vendorSpecificAttributes;
     }
 
-    public LocationData getLocationData() {
-        return locationData;
-    }
-
-    public void setLocationData(LocationData locationData) {
-        this.locationData = locationData;
-    }
-
-    /**
-     * updateLocationData updates the final LocationData instance.
-     *
-     * @param locationData the final location data we're going to store, if applies
-     */
-    public void updateLocationData(final LocationData locationData) {
-        if (locationData == null) {
-            return;
-        }
-
-        if (this.locationData == null) {
-            this.locationData = locationData;
-            return;
-        }
-
-        if (locationData.getAccuracy() >= this.locationData.getAccuracy()) {
-            this.locationData = locationData;
-        }
-    }
 }
