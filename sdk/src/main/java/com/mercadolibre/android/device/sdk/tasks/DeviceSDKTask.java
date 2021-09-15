@@ -48,10 +48,8 @@ public class DeviceSDKTask extends AsyncTask<String, Integer, String> {
      */
     @Override
     protected String doInBackground(String... strings) {
-        dataCollectorManager.stopListeners();
         dataCollectorManager.startCollectors(contextRef, deviceRef);
         waitForListeners();
-        dataCollectorManager.stopListeners();
         return "";
     }
 

@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.mercadolibre.android.device.sdk.collectors.AdvertisingIdCollector;
 import com.mercadolibre.android.device.sdk.collectors.DeviceDataCollector;
-import com.mercadolibre.android.device.sdk.collectors.LocationCollector;
 import com.mercadolibre.android.device.sdk.domain.Device;
 
 import java.io.Serializable;
@@ -22,7 +21,7 @@ import java.io.Serializable;
 public final class DataCollectorManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private LocationCollector locationCollector;
+
     /**
      * startCollectors registers every listener needed for
      * capture or generate the data we want to track.
@@ -38,18 +37,6 @@ public final class DataCollectorManager implements Serializable {
         deviceDataCollector.collectData(context, device);
 
         AdvertisingIdCollector.getInstance().start(context, device);
-        locationCollector = new LocationCollector();
-        locationCollector.collectData(context, device);
-
     }
 
-    /**
-     * stopListeners is called when caller needs to cancel current listeners.
-     */
-    public void stopListeners() {
-        if (locationCollector == null) {
-            return;
-        }
-        locationCollector.stopLocationUpdates();
-    }
 }
