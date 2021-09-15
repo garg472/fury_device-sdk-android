@@ -74,10 +74,12 @@ public class LocationCollector {
     @SuppressLint("MissingPermission")
     private void registerLocationUpdate() {
         if (isLocationPermissionGranted(contextRef)) {
-            mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
-                    0, 0, mLocationListener, Looper.getMainLooper());
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                    0, 0, mLocationListener, Looper.getMainLooper());
+            if (mLocationManager.getAllProviders().contains("network")) {
+                mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, mLocationListener, Looper.getMainLooper());
+            }
+            if (mLocationManager.getAllProviders().contains("gps")) {
+                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mLocationListener, Looper.getMainLooper());
+            }
         }
     }
 
