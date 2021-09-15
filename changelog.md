@@ -1,3 +1,6 @@
+# v2.0.1
+- Fix de location, dejamos de pedirla
+
 # v2.0.0
 - Se migra a api 29 de android
 - Se corrige error con widevine_id
