@@ -1,3 +1,7 @@
+# v2.1.0
+## Migrated
+- Migration to the new Plugin of Gradle --> 14.+.
+
 # v2.0.1
 - Fix de location, dejamos de pedirla
 

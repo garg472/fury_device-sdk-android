@@ -5,7 +5,10 @@ buildscript {
         mavenCentral()
     }
 
-    dependencies {
+        classpath "com.mercadolibre.android.gradle:baseplugin:$meliPluginGradleVersion"
+        classpath "com.mercadolibre.android.gradle:library:$meliPluginGradleVersion"
+        classpath "com.mercadolibre.android.gradle:app:$meliPluginGradleVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "com.android.tools.build:gradle:$gradleBuildTools"
         classpath "com.monits:static-code-analysis-plugin:$staticAnalysis"
     }
@@ -18,10 +21,6 @@ allprojects {
         mavenCentral()
     }
 
-    tasks.withType(JavaCompile) {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
 
     group = libraryGroupId
     version = libraryVersion
