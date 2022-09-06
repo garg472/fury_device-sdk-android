@@ -1,3 +1,7 @@
+# v3.0.0
+## Migrated
+- Migrated to target API 32 (Android 12)
+
 # v2.0.1
 - Fix de location, dejamos de pedirla
 
