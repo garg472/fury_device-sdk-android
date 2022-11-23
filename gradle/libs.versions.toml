@@ -1,0 +1,45 @@
+
+[versions]
+##################################################################################
+# Configurer
+##################################################################################
+##################################################################################
+# Meli libs
+##################################################################################
+##################################################################################
+# Misc libs
+##################################################################################
+gmsPlayServicesBase = "16.1.0"
+gmsPlayServicesAds = "16.0.0"
+gsonGson = "2.8.2"
+support = "28.0.0"
+##################################################################################
+# Test libs
+##################################################################################
+mockito = "3.3.0"
+robolectric = "4.3"
+junit = "4.12"
+
+[libraries]
+##################################################################################
+# Ml Configurer
+##################################################################################
+##################################################################################
+# Mp Configurer
+##################################################################################
+##################################################################################
+# Meli libs
+##################################################################################
+##################################################################################
+# Misc libs
+##################################################################################
+misc-gmsPlayServicesBase = { module ="com.google.android.gms:play-services-base", version.ref = "gmsPlayServicesBase"}
+misc-gmsPlayServicesAds = { module ="com.google.android.gms:play-services-ads", version.ref = "gmsPlayServicesAds"}
+misc-gsonGson = { module ="com.google.code.gson:gson", version.ref = "gsonGson"}
+misc-junit = { module ="junit:junit", version.ref = "junit"}
+misc-mockitoCore = { module ="org.mockito:mockito-core", version.ref = "mockito"}
+misc-mockitoInline = { module ="org.mockito:mockito-inline", version.ref = "mockito"}
+misc-robolectric = { module ="org.robolectric:robolectric", version.ref = "robolectric" }
+misc-supportAnnotations = { module ="com.android.support:support-annotations", version.ref = "support"}
+misc-supportDesign = { module ="com.android.support:design", version.ref = "support"}
+misc-supportAppcompatV7 = { module ="com.android.support:appcompat-v7", version.ref = "support"}

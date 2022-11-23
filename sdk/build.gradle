@@ -43,15 +43,15 @@ android {
 }
 
 dependencies {
-    api "com.google.code.gson:gson:$gson"
-    api "com.android.support:support-annotations:$support"
-    api "com.google.android.gms:play-services-base:$psBase"
-    api "com.google.android.gms:play-services-ads:$psAds"
+    api libs.misc.gsonGson
+    api libs.misc.supportAnnotations
+    api libs.misc.gmsPlayServicesBase
+    api libs.misc.gmsPlayServicesAds
 
-    testImplementation "junit:junit:$junit"
-    testImplementation "org.mockito:mockito-core:$mockito"
-    testImplementation "org.mockito:mockito-inline:$mockito"
-    testImplementation "org.robolectric:robolectric:$robolectric"
+    testImplementation libs.misc.junit
+    testImplementation libs.misc.mockitoCore
+    testImplementation libs.misc.mockitoInline
+    testImplementation libs.misc.robolectric
 }
 
 staticCodeAnalysis {

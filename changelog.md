@@ -1,3 +1,7 @@
+# v2.1.0
+##Migrated
+- Migrated to the new libraries organization implementing a version catalog (gradle/libs.toml file).
+
 # v2.0.1
 - Fix de location, dejamos de pedirla
 

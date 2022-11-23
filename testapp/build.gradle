@@ -36,6 +36,6 @@ android {
 
 dependencies {
     implementation project(":sdk")
-    implementation "com.android.support:appcompat-v7:$support"
-    implementation "com.android.support:design:$support"
+    implementation libs.misc.supportAppcompatV7
+    implementation libs.misc.supportDesign
 }
