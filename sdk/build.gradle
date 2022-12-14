@@ -10,7 +10,6 @@ android {
 
     defaultConfig {
         minSdkVersion minApiLevel
-        targetSdkVersion maxApiLevel
         consumerProguardFiles 'proguard-rules.pro'
     }
 
