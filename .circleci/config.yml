@@ -104,12 +104,30 @@ jobs:
 # inherit its properties from a specific workflow
 ##
 workflows:
-  version: 2
-  build-test-deploy:
+   ci:
     jobs:
-      - sdk:
-          <<: *defaultWorkflow
-      - testapp:
-          <<: *defaultWorkflow
-      - deploy:
-          <<: *deployReleaseWorkflow
+    - meli/assemble:
+        machine_size: xlarge
+        build_context: << pipeline.parameters.build_context >>
+        pipeline_id: << pipeline.id >>
+        pipeline_number: << pipeline.number >>
+    - meli/check:
+        machine_size: xlarge
+        build_context: << pipeline.parameters.build_context >>
+        pipeline_id: << pipeline.id >>
+        pipeline_number: << pipeline.number >>
+    - meli/code-quality:
+        build_context: << pipeline.parameters.build_context >>
+        pipeline_id: << pipeline.id >>
+        pipeline_number: << pipeline.number >>
+  build:
+    when:
+      equal:
+      - build
+      - << pipeline.parameters.type >>
+    jobs:
+    - meli/build:
+        machine_size: xlarge
+        build_context: << pipeline.parameters.build_context >>
+        pipeline_id: << pipeline.id >>
+        pipeline_number: << pipeline.number >>
