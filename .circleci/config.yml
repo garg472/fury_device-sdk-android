@@ -86,18 +86,7 @@ deploy-release-workflow: &deployReleaseWorkflow
 # The ones that will inherit from buildJob need to create the environment variable
 # MODULE. Check the steps defined for that job so you understand why :)
 ##
-version: 2
-jobs:
-  sdk:
-    <<: *buildJob
-    environment:
-      MODULE: sdk
-  testapp:
-    <<: *buildJob
-    environment:
-      MODULE: testapp
-  deploy:
-    <<: *deployReleaseJob
+
 ##
 # We define here workflows. We will add all our jobs
 # to a common workflow, and for each job of the workflow we will make it
