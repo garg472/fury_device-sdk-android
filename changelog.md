@@ -1,6 +1,6 @@
 # v3.0.0
 ## Migrated
-- Migration to the min API 23.
+- Migration to the min API 21.
 
 # v2.0.1
 - Fix de location, dejamos de pedirla
