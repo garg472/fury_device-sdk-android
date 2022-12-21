@@ -1,0 +1,12 @@
+final String LIST_PROJECTS_TASK = "listProjects"
+
+task(LIST_PROJECTS_TASK) {
+    it.group 'meliPlugin'
+    it.description 'List all subprojects in this project'
+    doLast {
+        println("=== BEGINNING OF PROJECTS LIST ===")
+        for (subProject in project.subprojects) {
+            println(subProject.name)
+        }
+    }
+}

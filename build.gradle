@@ -11,6 +11,8 @@ buildscript {
     }
 }
 
+apply from: rootProject.file('tools.gradle')
+
 allprojects {
     repositories {
         jcenter()
