@@ -15,8 +15,6 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.io.IOException;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -26,7 +24,6 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 
-@SuppressFBWarnings
 @RunWith(RobolectricTestRunner.class)
 public class AdvertisingIdCollectorTest {
 

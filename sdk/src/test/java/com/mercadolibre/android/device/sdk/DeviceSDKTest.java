@@ -12,11 +12,8 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.util.Map;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import static org.mockito.Mockito.spy;
 
-@SuppressFBWarnings
 @RunWith(RobolectricTestRunner.class)
 public class DeviceSDKTest extends AbstractRobolectricTest{
     private Context context;

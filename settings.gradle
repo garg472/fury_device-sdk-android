@@ -1,1 +1,2 @@
 include ':sdk', ':testapp'
+rootProject.name='device-sdk-android'

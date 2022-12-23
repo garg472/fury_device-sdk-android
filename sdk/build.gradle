@@ -1,12 +1,10 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.monits.staticCodeAnalysis'
 
 apply from: rootProject.file('jacoco.gradle')
 apply from: rootProject.file('publish.gradle')
 
 android {
     compileSdkVersion maxApiLevel.toInteger()
-    buildToolsVersion androidBuildTools
 
     defaultConfig {
         minSdkVersion minApiLevel
@@ -37,14 +35,14 @@ android {
     }
 
     compileOptions {
-        targetCompatibility = 1.8
-        sourceCompatibility = 1.8
+        targetCompatibility = 11
+        sourceCompatibility = 11
     }
 }
 
 dependencies {
     api "com.google.code.gson:gson:$gson"
-    api "com.android.support:support-annotations:$support"
+    api "androidx.annotation:annotation:$androidXAnnotations"
     api "com.google.android.gms:play-services-base:$psBase"
     api "com.google.android.gms:play-services-ads:$psAds"
 
@@ -52,13 +50,4 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockito"
     testImplementation "org.mockito:mockito-inline:$mockito"
     testImplementation "org.robolectric:robolectric:$robolectric"
-}
-
-staticCodeAnalysis {
-    ignoreErrors = false
-    androidLint = false
-    checkstyle = false
-    findbugs = false
-    cpd = false
-    pmd = false
 }

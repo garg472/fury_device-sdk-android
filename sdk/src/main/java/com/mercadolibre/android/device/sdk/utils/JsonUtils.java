@@ -1,6 +1,6 @@
 package com.mercadolibre.android.device.sdk.utils;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;

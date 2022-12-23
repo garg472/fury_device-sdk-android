@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.CallSuper;
+import androidx.annotation.CallSuper;
 import android.util.Log;
 
 import org.junit.After;
@@ -21,14 +21,11 @@ import org.robolectric.shadows.ShadowSQLiteConnection;
 
 import javax.annotation.Nonnull;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 @Config(
         sdk = Build.VERSION_CODES.LOLLIPOP
         , manifest = "AndroidManifest.xml")
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings({ "PMD.AbstractClassWithoutAbstractMethod" })
-@SuppressFBWarnings(value = "MISSING_TO_STRING_OVERRIDE", justification = "We don't want a toString of this class")
 public abstract class AbstractRobolectricTest {
 
     /**
@@ -53,7 +50,6 @@ public abstract class AbstractRobolectricTest {
         Log.i(tag, String.format("===> Running test: %s#%s()", getClass().getSimpleName(), name.getMethodName()));
     }
 
-    @SuppressFBWarnings(value = "FORBIDDEN_SYSTEM", justification = "The idea is to not depend on LOG")
     private void configureLogOutput() {
         ShadowLog.stream = System.out;
     }

@@ -10,7 +10,7 @@ import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.VisibleForTesting;
 
 import com.mercadolibre.android.device.sdk.domain.Device;
 import com.mercadolibre.android.device.sdk.domain.Fingerprint;

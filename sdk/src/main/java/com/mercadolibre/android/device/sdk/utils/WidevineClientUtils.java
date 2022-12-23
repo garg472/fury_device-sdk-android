@@ -3,8 +3,8 @@ package com.mercadolibre.android.device.sdk.utils;
 import android.media.MediaDrm;
 import android.media.UnsupportedSchemeException;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.RequiresApi;
+import androidx.annotation.VisibleForTesting;
 import android.util.Base64;
 import android.util.Log;
 

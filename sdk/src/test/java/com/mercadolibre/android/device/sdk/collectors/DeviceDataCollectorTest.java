@@ -21,8 +21,6 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -33,7 +31,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
-@SuppressFBWarnings
 @RunWith(RobolectricTestRunner.class)
 public class DeviceDataCollectorTest {
 

@@ -1,4 +1,9 @@
-apply plugin: JacocoPlugin
+
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.8.8"
+}
 
 final String JACOCO_FULL_REPORT_TASK = "jacocoFullReport"
 
@@ -9,14 +14,10 @@ tasks.withType(Test) {
     }
 }
 
-task(JACOCO_FULL_REPORT_TASK) {
-    it.group 'reporting'
-}
-
 Task jacocoTestReportTask = findOrCreateJacocoTestReportTask()
 
 getVariants().all { variant ->
-    JacocoReport reportTask = createReportTask(variant)
+    JacocoReport reportTask = addConfigReportTask(variant)
     jacocoTestReportTask.dependsOn reportTask
 }
 
@@ -48,51 +49,57 @@ def getVariants() {
     }
 }
 
-def createReportTask(def variant) {
+def addConfigReportTask(def variant) {
     def sourceDirs = sourceDirs(variant)
     def classesDir = classesDir(variant)
     def testTask = testTask(variant)
     def executionData = executionDataFile(testTask)
-    return project.task("jacoco${testTask.name.capitalize()}Report", type: JacocoReport) { JacocoReport reportTask ->
-        reportTask.dependsOn testTask
-        reportTask.group = "reporting"
-        reportTask.description = "Generates Jacoco coverage reports for the ${variant.name} variant."
-        reportTask.executionData = project.files(executionData)
-        reportTask.sourceDirectories = project.files(sourceDirs)
-        reportTask.classDirectories = classesDir
-        reportTask.reports {
-            csv.enabled false
-            html.enabled true
-            xml.enabled true
-        }
+    JacocoReport jacocoReport = project.task("jacoco${testTask.name.capitalize()}Report", type: JacocoReport)
+    jacocoReport.dependsOn testTask
+    jacocoReport.group = "reporting"
+    jacocoReport.description = "Generates Jacoco coverage reports for the ${variant.name} variant."
+    jacocoReport.getExecutionData().setFrom(project.files(executionData))
+    jacocoReport.getSourceDirectories().setFrom(project.files(sourceDirs))
+    jacocoReport.getClassDirectories().setFrom(classesDir)
+    jacocoReport.reports {
+        csv.enabled false
+        html.enabled true
+        xml.enabled true
     }
+    return jacocoReport
 }
 
-def sourceDirs(variant) {
+static def sourceDirs(variant) {
     variant.sourceSets.java.srcDirs.collect { it.path }.flatten()
 }
 
 def classesDir(variant) {
     def filters = ['**/R.class',
-                   '**/R$*.class',
-                   '**/BuildConfig.class',
-                   '**/*$ViewInjector*.*',
-                   '**/*$ViewBinder*.*',
-                   '**/Manifest*.*',
-                   '**/*Dagger*.*',
-                   '**/*MembersInjector*.*',
-                   '**/*_Provide*Factory*.*',
-                   '**/*_Factory*.*' ]
-    def javaTree = fileTree(dir: variant.javaCompile.destinationDir, excludes: filters)
-    def kotlinTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/${variant}", excludes: filters)
+                    '**/R$*.class',
+                    '**/BuildConfig.class',
+                    '**/*$ViewInjector*.*',
+                    '**/*$ViewBinder*.*',
+                    '**/Manifest*.*',
+                    '**/*Dagger*.*',
+                    '**/*MembersInjector*.*',
+                    '**/*_Provide*Factory*.*',
+                    '**/*_Factory*.*' ]
+    def javaTree = fileTree(
+            dir: "$buildDir/intermediates/classes/${variant.name}",
+            excludes: filters
+    )
+    def kotlinTree = fileTree(
+            dir: "$buildDir/tmp/kotlin-classes/${variant.name}",
+            excludes: filters
+    )
 
-    files([ javaTree ], [ kotlinTree ])
+    return files([javaTree], [kotlinTree])
 }
 
 def testTask(variant) {
     project.tasks.withType(Test).find { task -> task.name =~ /test${variant.name.capitalize()}UnitTest/ }
 }
 
-def executionDataFile(Task testTask) {
+static def executionDataFile(Task testTask) {
     testTask.jacoco.destinationFile.path
 }
