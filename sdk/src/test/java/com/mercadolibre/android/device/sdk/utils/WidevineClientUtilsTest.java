@@ -37,11 +37,11 @@ public class WidevineClientUtilsTest extends AbstractRobolectricTest {
         MediaDrm mediaDrm = mock(MediaDrm.class);
         byte[] widevineResponse = "23131321-31213-123131-321313".getBytes();
         when(mediaDrm.getPropertyByteArray(anyString())).thenReturn(widevineResponse);
-        doNothing().when(mediaDrm).release();
+        doNothing().when(mediaDrm).close();
         doReturn(mediaDrm).when(widevineClient).getMediaDrm();
 
         final String widevineId = widevineClient.getWidevineClientId();
-        verify(mediaDrm).release();
+        verify(mediaDrm).close();
         assertNotNull(widevineId);
     }
 

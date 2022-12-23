@@ -1,6 +1,7 @@
 package com.mercadolibre.android.device.sdk.collectors;
 
 import android.content.Context;
+import android.os.Build;
 
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import java.io.IOException;
 
@@ -24,6 +26,8 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 
+//TODO check if this can be in the abstract test class
+@Config(sdk = Build.VERSION_CODES.P, manifest = "AndroidManifest.xml")
 @RunWith(RobolectricTestRunner.class)
 public class AdvertisingIdCollectorTest {
 
@@ -44,7 +48,6 @@ public class AdvertisingIdCollectorTest {
     }
 
     private void setUpAdvertisingIdCollector(final Context context) {
-
         advertisingIdCollector = spy(AdvertisingIdCollector.getInstance());
         advertisingIdInfo = mock(AdvertisingIdClient.Info.class);
         try {
@@ -53,7 +56,6 @@ public class AdvertisingIdCollectorTest {
         } catch (IOException | IllegalStateException | GooglePlayServicesNotAvailableException | GooglePlayServicesRepairableException e) {
             assertNull(e);
         }
-
     }
 
     private void setMaxRetriesToOneForTesting() {

@@ -3,6 +3,7 @@ package com.mercadolibre.android.device.sdk.collectors;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 
 import com.mercadolibre.android.device.sdk.domain.Device;
 import com.mercadolibre.android.device.sdk.domain.Fingerprint;
@@ -16,6 +17,7 @@ import org.mockito.Mock;
 import android.view.Display;
 
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -31,6 +33,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
+//TODO check if this can be in the abstract test class
+@Config(sdk = Build.VERSION_CODES.P, manifest = "AndroidManifest.xml")
 @RunWith(RobolectricTestRunner.class)
 public class DeviceDataCollectorTest {
 

@@ -1,5 +1,3 @@
-[![CircleCI](https://circleci.com/gh/mercadolibre/fury_device-sdk-android/tree/release%2F1.0.0.svg?style=svg)](https://circleci.com/gh/mercadolibre/fury_device-sdk-android/tree/release%2F1.0.0)
-
 # MercadoPago's Device SDK for Android
 
 ## What is this for?

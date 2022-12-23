@@ -21,9 +21,7 @@ import org.robolectric.shadows.ShadowSQLiteConnection;
 
 import javax.annotation.Nonnull;
 
-@Config(
-        sdk = Build.VERSION_CODES.LOLLIPOP
-        , manifest = "AndroidManifest.xml")
+@Config(sdk = Build.VERSION_CODES.P, manifest = "AndroidManifest.xml")
 @RunWith(RobolectricTestRunner.class)
 @SuppressWarnings({ "PMD.AbstractClassWithoutAbstractMethod" })
 public abstract class AbstractRobolectricTest {
