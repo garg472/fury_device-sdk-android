@@ -6,6 +6,7 @@ jacoco {
 }
 
 final String JACOCO_FULL_REPORT_TASK = "jacocoFullReport"
+final String JACOCO_REPORT_TASK = "jacocoTestReport"
 
 tasks.withType(Test) {
     testLogging {
@@ -14,31 +15,25 @@ tasks.withType(Test) {
     }
 }
 
-Task jacocoTestReportTask = findOrCreateJacocoTestReportTask()
+Task jacocoTestReportTask = findOrCreateJacocoTask(JACOCO_REPORT_TASK)
+
 
 getVariants().all { variant ->
     JacocoReport reportTask = addConfigReportTask(variant)
     jacocoTestReportTask.dependsOn reportTask
 }
 
-if (project.tasks.findByName(JACOCO_FULL_REPORT_TASK)) {
-    project.tasks."$JACOCO_FULL_REPORT_TASK".dependsOn jacocoTestReportTask
-} else {
-    project.tasks.whenTaskAdded {
-        if (it.name.contentEquals(JACOCO_FULL_REPORT_TASK)) {
-            it.dependsOn jacocoTestReportTask
-        }
-    }
-}
+Task jacocoFullReportTask = findOrCreateJacocoTask(JACOCO_FULL_REPORT_TASK)
+jacocoFullReportTask.dependsOn jacocoTestReportTask
 
-def findOrCreateJacocoTestReportTask() {
-    Task jacocoTestReportTask = project.tasks.findByName("jacocoTestReport")
-    if (!jacocoTestReportTask) {
-        jacocoTestReportTask = project.task("jacocoTestReport") {
+def findOrCreateJacocoTask(def taskName) {
+    Task jacocoReportTask = project.tasks.findByName(taskName)
+    if (!jacocoReportTask) {
+        jacocoReportTask = project.task(taskName) {
             group = "reporting"
         }
     }
-    return jacocoTestReportTask
+    return jacocoReportTask
 }
 
 def getVariants() {
