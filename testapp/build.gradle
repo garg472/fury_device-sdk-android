@@ -5,7 +5,7 @@ apply from: rootProject.file('jacoco.gradle')
 android {
     compileSdkVersion 29
 
-    lintOptions{
+	lint {
         // TODO: Delete this once play services is updated. Now we need it because play services brings support library 26
         disable 'GradleCompatible'
     }
