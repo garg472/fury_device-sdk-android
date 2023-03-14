@@ -4,6 +4,8 @@
 
 ## What is this for?
 
+test
+
 The MercadoPago's Device SDK for Android makes it easy to obtain the device fingerprinting information.
 You should send this information when processing a payment with MercadoPago so we can use it to help you avoid rejected payments or chargebacks.
 For more details about this, visit the [developers guide](https://developers.mercadopago.com). 
